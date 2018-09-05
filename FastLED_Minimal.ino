@@ -18,15 +18,6 @@ void setup()
 /*****************  MAIN LOOP  ****************************************/
 void loop() 
 {
-  delay(5000);
-  for(int i = 0; i < 8; i++) 
-  {
-    Serial.print("leds[");
-    Serial.print(i);
-    Serial.println("] = CHSV (96,255,192);");
-    delay(500);
-  }
-  delay(100000);
+  leds[11] = CHSV (96, 255, 192);
+  FastLED.show();
 }
-
-
