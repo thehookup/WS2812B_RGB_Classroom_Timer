@@ -1,0 +1,22 @@
+input_number:
+  custom_timer:
+    name: Custom Timer
+    initial: 0
+    min: 0
+    max: 60
+    step: 1
+
+automation old:
+  - alias: Send MQTT Timer
+    trigger:
+      platform: state
+      entity_id: input_number.custom_timer
+    action:
+      - service: mqtt.publish
+        data_template:
+          #change the topic to your MQTT topic specified in your arduino program
+          topic: "customTimer" 
+          #if you change the name from custom_timer you'll need to change this line to your new name
+          payload_template: "{{ states('input_number.custom_timer')  | int }}"
+          qos: 0
+          retain: false
