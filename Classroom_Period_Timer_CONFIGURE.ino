@@ -108,8 +108,8 @@ void callback(char* topic, byte* payload, unsigned int length)
   timer.deleteTimer(timerNumber);
   delay(10);
   ledsRemaining = NUM_LEDS;
-  totalMinutes = intPayload;
-  mappedTimer = totalMinutes / NUM_LEDS * 60000;
+  totalMinutes = intPayload * 60;
+  mappedTimer = totalMinutes / NUM_LEDS * 1000;
   timerNumber = timer.setTimer(mappedTimer, subtractInterval, NUM_LEDS);
 }
 
